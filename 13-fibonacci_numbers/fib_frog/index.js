@@ -1,16 +1,10 @@
 function fbs(n) {
-
     if (n === 0) return [];
-
-    const arr = [0, 1, 1];
-    let i = 3;
-
-    while (arr[i - 1] + arr[i - 2] <= n) {
-        arr[i] = arr[i - 1] + arr[i - 2];
-        i++;
+    let next, a = [0, 1, 1];
+    while ((next = a[a.length - 1] + a[a.length - 2]) <= n) {
+        a.push(next);
     }
-
-    return arr.slice(2);
+    return a.slice(2);
 }
 
 function solution(A) {
@@ -46,4 +40,7 @@ function print() {
     })
 }
 
-console.log(solution([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1]));
+// console.log(solution([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1]));
+
+module.exports.fbs = fbs;
+module.exports.solution = solution;
