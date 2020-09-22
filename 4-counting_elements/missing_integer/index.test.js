@@ -1,4 +1,4 @@
-const { fbs, solution } = require('./index');
+const { solution } = require('./index');
 
 test('Example tests', () => {
     expect(solution([1, 3, 6, 4, 1, 2])).toBe(5)
