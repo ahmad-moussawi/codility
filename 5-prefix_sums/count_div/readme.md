@@ -19,3 +19,6 @@ A and B are integers within the range [0..2,000,000,000];
 K is an integer within the range [1..2,000,000,000];
 A ≤ B.
 ```
+
+----
+Result: https://app.codility.com/demo/results/training6GXA2H-AU6/

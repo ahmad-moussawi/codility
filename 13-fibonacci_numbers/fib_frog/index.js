@@ -8,18 +8,19 @@ function fbs(n) {
 }
 
 function solution(A) {
-    let arr = [1, ...A, 1];
-    let steps = fbs(arr.length);
-    let cost = { [arr.length - 1]: 0 };
+    let arr = [1, ...A];
+    let steps = fbs(arr.length + 1);
+    let cost = [];
+    cost[arr.length] = 0;
 
-    for (let i = arr.length - 2; i >= 0; i--) {
+    for (let i = arr.length - 1; i >= 0; i--) {
         if (arr[i] === 0) continue;
 
         cost[i] = -1;
 
-        for (let j = 0; j < steps.length, i + steps[j] < arr.length; j++) {
+        for (let j = 0; j < steps.length, i + steps[j] < arr.length + 1; j++) {
             let target = i + steps[j];
-            if (!(arr[target] === 1 && cost[target] > -1)) continue;
+            if (!(target === arr.length || arr[target] === 1 && cost[target] > -1)) continue;
 
             if (cost[i] === -1 || cost[target] + 1 < cost[i]) {
                 cost[i] = cost[target] + 1;
