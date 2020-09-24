@@ -7,7 +7,7 @@ test('start should return K when A < K', () => {
     expect(start(1005, 1000)).toBe(2000);
 })
 
-test('start should return the next divisable of K when A > K', () => {
+test('start should return the next dividable of K when A > K', () => {
     expect(start(105, 100)).toBe(200);
     expect(start(1500, 1000)).toBe(2000);
     expect(start(901, 900)).toBe(1800);
@@ -26,6 +26,8 @@ test('start should return K when A === K', () => {
 })
 
 test('Example tests', () => {
+    expect(solution(5, 5, 2)).toBe(0)
+    expect(solution(6, 6, 2)).toBe(1)
     expect(solution(6, 11, 2)).toBe(3)
     expect(solution(6, 12, 2)).toBe(4)
     expect(solution(0, 4, 2)).toBe(3)
@@ -39,6 +41,10 @@ test('Example tests', () => {
     expect(solution(10, 10, 5)).toBe(1)
     expect(solution(10, 10, 7)).toBe(0)
     expect(solution(10, 10, 20)).toBe(0)
+
+    expect(solution(6, 17, 3)).toBe(4)
+    expect(solution(6, 11, 10)).toBe(1)
+    expect(solution(11, 345, 17)).toBe(20)
 });
 
 test('Big values', () => {
