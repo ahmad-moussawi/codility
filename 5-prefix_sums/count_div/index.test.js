@@ -4,6 +4,7 @@ test('start should return K when A < K', () => {
     expect(start(0, 5)).toBe(0);
     expect(start(99, 100)).toBe(100);
     expect(start(950, 1000)).toBe(1000);
+    expect(start(1005, 1000)).toBe(2000);
 })
 
 test('start should return the next divisable of K when A > K', () => {
