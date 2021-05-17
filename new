@@ -1,0 +1,45 @@
+#!/bin/bash
+
+url=$1
+
+path=${url#https://app.codility.com/programmers/lessons/}
+path=${path%%/}
+echo "creating required files for $path"
+
+if [[ -d $path ]]; then
+    echo "$path already exists aborting."
+    exit 1
+fi
+
+mkdir -p $path
+
+echo "
+function solution() {
+
+}
+
+module.exports.solution = solution;
+" >$path/index.js
+
+echo "
+const { solution } = require('./index');
+
+test('Basic test', () => {
+    var sets = [
+        [
+            [], // data
+            0 // expected
+        ],
+    ];
+
+    sets.forEach(set => {
+        expect(solution(set[0])).toBe(set[1]);
+    })
+})
+" >$path/index.test.js
+
+echo "
+$url
+" >$path/readme.md
+
+echo "scaffolding done."
