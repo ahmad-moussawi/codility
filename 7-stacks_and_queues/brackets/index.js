@@ -11,7 +11,7 @@ function solution(S) {
     const stack = [];
 
     for (var c of S) {
-        const isOpening = Object.keys(opening).includes(c);
+        const isOpening = !!opening[c];
 
         // starting with a closing tag is always invalid
         if (stack.length === 0 && isOpening) {
