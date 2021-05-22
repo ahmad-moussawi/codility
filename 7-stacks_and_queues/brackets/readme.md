@@ -23,4 +23,4 @@ N is an integer within the range `[0..200,000]`;
 string S consists only of the following characters: `"(", "{", "[", "]", "}"` and/or `")"`.
 
 Result:
-https://app.codility.com/demo/results/training7SRPD2-6T7/
+https://app.codility.com/demo/results/trainingNCV6WB-585/
