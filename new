@@ -13,33 +13,22 @@ fi
 
 mkdir -p $path
 
-echo "
-function solution() {
+echo "function solution() {
 
 }
 
 module.exports.solution = solution;
 " >$path/index.js
 
-echo "
-const { solution } = require('./index');
+echo "const { solution } = require('./index');
 
 test('Basic test', () => {
-    var sets = [
-        [
-            [], // data
-            0 // expected
-        ],
-    ];
-
-    sets.forEach(set => {
-        expect(solution(set[0])).toBe(set[1]);
-    })
+        expect(
+            solution(true)
+        ).toBe(true);
 })
 " >$path/index.test.js
 
-echo "
-$url
-" >$path/readme.md
+echo "$url" >$path/readme.md
 
 echo "scaffolding done."
