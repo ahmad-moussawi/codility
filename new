@@ -7,29 +7,32 @@ path=${path%%/}
 echo "creating required files for $path"
 
 if [[ -d $path ]]; then
-    echo "$path already exists aborting."
-    exit 1
+    echo "$path already exists, creating missing files only"
+    # exit 1
 fi
 
 mkdir -p $path
 
-echo "function solution() {
+if [[ ! -f $path/index.js ]]; then
+
+    echo "function solution() {
 
 }
 
 module.exports.solution = solution;
-" >$path/index.js
+    " >$path/index.js
+fi
 
-echo "const { solution } = require('./index');
+if [[ ! -f $path/index.test.js ]]; then
+    echo "const { solution } = require('./index');
 
 test('Basic test', () => {
         expect(
             solution(true)
         ).toBe(true);
 })
-" >$path/index.test.js
-
-echo "$url" >$path/readme.md
+    " >$path/index.test.js
+fi
 
 node fetch.js $url
 
