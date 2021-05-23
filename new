@@ -31,4 +31,6 @@ test('Basic test', () => {
 
 echo "$url" >$path/readme.md
 
+node fetch.js $url
+
 echo "scaffolding done."

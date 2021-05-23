@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.9",
     "jest": "^26.4.2"
   },
   "scripts": {
