@@ -23,3 +23,5 @@ string S consists only of the characters "(" and/or ")".
 
 
 Copyright 2009–2021 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
+
+Result: https://app.codility.com/demo/results/trainingGPHYMU-A9Q/

@@ -1,8 +1,28 @@
 const { solution } = require('./index');
 
 test('Basic test', () => {
-        expect(
-            solution(true)
-        ).toBe(true);
+    expect(solution('(()(())())')).toBe(1);
+    expect(solution('())')).toBe(0);
+    expect(solution('')).toBe(1);
+    expect(solution(')')).toBe(0);
+    expect(solution('(')).toBe(0);
+    expect(solution('((')).toBe(0);
+    expect(solution('(())')).toBe(1);
+    expect(solution('(())(()(()))()')).toBe(1);
+    expect(solution('(')).toBe(0);
+    expect(solution(')(')).toBe(0);
+    expect(solution('())')).toBe(0);
+
+
+    expect(solution("()()")).toBe(1);
+    expect(solution("((()(()))())")).toBe(1);
+    expect(solution("()")).toBe(1);
+    expect(solution("((()))")).toBe(1);
+    expect(solution("((()())())")).toBe(1);
+    expect(solution(")(")).toBe(0);
+    expect(solution("")).toBe(1);
+    expect(solution("((((")).toBe(0);
+    expect(solution("))")).toBe(0);
+
 })
 
