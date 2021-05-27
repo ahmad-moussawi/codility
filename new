@@ -13,25 +13,16 @@ fi
 
 mkdir -p $path
 
-if [[ ! -f $path/index.js ]]; then
-
-    echo "function solution() {
-
-}
-
-module.exports.solution = solution;
-    " >$path/index.js
-fi
+# if [[ ! -f $path/index.js ]]; then
+#     touch $path/index.js
+# fi
 
 if [[ ! -f $path/index.test.js ]]; then
     echo "const { solution } = require('./index');
 
 test('Basic test', () => {
-        expect(
-            solution(true)
-        ).toBe(true);
-})
-    " >$path/index.test.js
+    // expect(solution(true)).toBe(true);
+})" >$path/index.test.js
 fi
 
 node fetch.js $url
