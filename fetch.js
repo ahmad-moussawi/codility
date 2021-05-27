@@ -5,8 +5,10 @@ const cheerio = require('cheerio');
 const Turndown = require('turndown');
 const turndown = new Turndown();
 
-const url = argv[2]
-const name = url.replace('https://app.codility.com/programmers/lessons/', '').replace(/\/$/, '');
+let url = argv[2]
+url = url.replace(/\/$/, '');
+
+const name = url.replace('https://app.codility.com/programmers/lessons/', '');
 
 function fetch(url) {
 
@@ -20,6 +22,7 @@ function fetch(url) {
     var content = "";
 
     return new Promise((resolve, reject) => {
+        console.log(`fetching ${url}`);
         var req = http.request(url + '/', function (res) {
             res.setEncoding("utf8");
 
@@ -29,8 +32,13 @@ function fetch(url) {
 
             res.on("end", function () {
                 if (content) {
-                    fs.writeFileSync(`./${name}/page.html`, content.trim(), { encoding: 'utf-8' });
+                    fs.writeFileSync(
+                        `./${name}/page.html`,
+                        content.trim(),
+                        { encoding: 'utf-8' }
+                    );
                 }
+
                 resolve(content);
             });
 
@@ -46,13 +54,21 @@ function fetch(url) {
 
 fetch(url).then(pageHtml => {
     const $ = cheerio.load(pageHtml);
-    var synopsis = $('.synopsis').text().trim();
-    var html = $('.desc-js-en').html().trim();
+    var synopsis = $('.synopsis').text();
+    var html = $('.desc-js-en').html();
+
     if (!html) {
         // in case we didn't find the correct description,
         // get the first one
-        html = $('.desc').first().html().trim();
+        html = $('.desc').first().html();
     }
+
+    if (!html) {
+        console.error('failed to find the description within the provided html');
+        return;
+    }
+
+    html = html.trim();
 
     var description = turndown.turndown(html);
 
